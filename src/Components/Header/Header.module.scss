@@ -1,0 +1,24 @@
+.header {
+  margin-top: 30px;
+  width: 1400px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-inline: auto;
+  padding-inline: 20px;
+  padding-top: 10px;
+  .title {
+    margin-top: 10px;
+    margin-bottom: 13px;
+    font-size: 32px;
+    text-align: center;
+    line-height: 0.7;
+    .hearts {
+      display: flex;
+      justify-content: space-around;
+      color: red;
+      padding-bottom: 5px;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+.main {
+  margin-block: 5px;
+  width: 1400px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  margin-inline: auto;
+  padding-inline: 20px;
+  padding-block: 10px;
+  .input {
+    border: 1px solid rgba(0,0,0,0.2);
+    width: 400px;
+    height: 40px;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 20px;
+    margin-inline: 20px;
+    &:focus {
+      border: 1px solid rgba(0,0,0,0.6);
+      outline: none;
+
+    }
+  }
+}
