@@ -8,6 +8,7 @@
   margin-inline: auto;
   padding-inline: 20px;
   padding-block: 10px;
+  margin-bottom: 30px;
 
   .todo__form {
     display: flex;
@@ -47,67 +48,106 @@
 
     h2 {
       margin-top: 4px;
+      margin-left: auto;
     }
   }
 
-  .todo__list {
-    width: 790px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-row-gap: 5px;
-    margin-block: 8px;
-    font-size: 26px;
-    button {
-      border: 1px solid rgba(0, 0, 0, 0.2);
-      border-radius: 10px;
-      background-color: #fff;
-      width: 400px;
-      font-size: 24px;
-      cursor: pointer;
-      transition: background-color 0.08s ease-in-out;
-    }
-    .todo__done {
-
-      transition: background-color 0.17s ease-in-out;
-
-      &:hover {
-        background-color: #abff8a;
+  .todo__list__container {
+    .todo__list {
+      width: 790px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      grid-row-gap: 5px;
+      margin-block: 60px;
+      font-size: 26px;
+  
+      button {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        background-color: #fff;
+        width: 400px;
+        font-size: 24px;
+        cursor: pointer;
+        transition: background-color 0.08s ease-in-out;
       }
-    }
-
-    .todo__delete {
-      transition: background-color 0.17s ease-in-out;
-
-      &:hover {
-        background-color: #ff8a8a;
+  
+      .todo__done {
+  
+        transition: background-color 0.17s ease-in-out;
+  
+        &:hover {
+          background-color: #abff8a;
+        }
       }
-    }
-    span {
-      width: 400px;
-      overflow: scroll;
-      margin-right: 20px;
+  
+      .todo__delete {
+        transition: background-color 0.17s ease-in-out;
+  
+        &:hover {
+          background-color: #ff8a8a;
+        }
+      }
+  
+      span {
+        width: 400px;
+        overflow: scroll;
+        margin-right: 20px;
+      }
     }
   }
 }
 
 @media (max-width: 1430px) {
   .main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     margin-inline: 20px;
 
-    .input {
-      margin-bottom: 15px;
+    .todo__form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-inline: 20px;
+  
+      input {
+        margin-bottom: 15px;
+      }
+  
+      h2 {
+        margin-right: auto;
+      } 
+    }
+    .todo__list__container {
+      .todo__list {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        span {
+          text-align: center;
+
+        }
+
+      }
     }
   }
+
 }
 
 @media (max-width: 500px) {
   .main {
-    .input {
-      width: 240px;
+    .todo__form {
+      input {
+        width: 280px;
+      }
+    }
+
+    .todo__list__container {
+      .todo__list {
+        button {
+          width: 280px;
+        }
+      }
     }
   }
 }

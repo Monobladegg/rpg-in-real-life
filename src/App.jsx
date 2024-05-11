@@ -8,9 +8,10 @@ export const TodoListContext = createContext([]);
 
 export default function App() {
   const [todoList, setTodoList] = React.useState([]);
+  const [todoListHistory, setTodoListHistory] = React.useState([]);
   const [todoTarget, setTodoTarget] = React.useState("");
   const [todoPoints, setTodoPoints] = React.useState(1);
-  const [todoPointsValue, setTodoPointsValue] = React.useState(0);
+  const [todoPointsValue, setTodoPointsValue] = React.useState(localStorage.getItem("points") || 0);
 
   useEffect(() => {
     console.log(todoList);

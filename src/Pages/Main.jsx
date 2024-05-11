@@ -30,6 +30,8 @@ export default function Main() {
 
   function doneTodo(index) {
     setTodoPointsValue(Number(todoPointsValue) + Number(todoPoints));
+
+    localStorage.setItem("points", Number(todoPointsValue) + Number(todoPoints));
     deleteTodo(index);
   }
 
@@ -59,12 +61,12 @@ export default function Main() {
         </section>
         <section className={s.todo__list__container}>
           {todoList.map(({ todoTarget, todoPoints, index }) => (
-            <p className={s.todo__list} key={index}>
+            <div key={index} className={s.todo__list}>
               <span className={s.todo__target}>Цель {index}: {todoTarget}</span>
-              <button className={s.todo__done} onClick={() => doneTodo(index)}>Выполнено</button>
               <span className={s.todo__points}>Награда: {todoPoints}</span>
+              <button className={s.todo__done} onClick={() => doneTodo(index)}>Выполнено</button>
               <button className={s.todo__delete} onClick={() => deleteTodo(index)}>Удалить</button>
-            </p>
+            </div>
           ))}
         </section>
       </main>
