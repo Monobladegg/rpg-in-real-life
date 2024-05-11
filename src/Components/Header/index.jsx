@@ -8,7 +8,7 @@ function Header() {
   return (
     <header className={s.header}>
       <div className={s.left}>
-        <Link to="/">
+        <Link to="/rpg-in-real-life/">
           <div className={s.title}>
             <span>RPG In</span>
             <br />
@@ -23,7 +23,7 @@ function Header() {
       </div>
       <div className={s.right}>
         <h1>
-          <Link to="/docs" className={s.link}>
+          <Link to="/rpg-in-real-life/docs" className={s.link}>
             Docs
           </Link>
         </h1>

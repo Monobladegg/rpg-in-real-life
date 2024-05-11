@@ -1,24 +1,113 @@
 .main {
+  display: flex;
+  flex-direction: column;
   margin-block: 5px;
-  width: 1400px;
+  max-width: 1400px;
   background-color: #fff;
   border-radius: 10px;
-  display: flex;
   margin-inline: auto;
   padding-inline: 20px;
   padding-block: 10px;
-  .input {
-    border: 1px solid rgba(0,0,0,0.2);
-    width: 400px;
-    height: 40px;
-    border-radius: 10px;
-    padding: 15px;
-    font-size: 20px;
-    margin-inline: 20px;
-    &:focus {
-      border: 1px solid rgba(0,0,0,0.6);
-      outline: none;
 
+  .todo__form {
+    display: flex;
+
+    input {
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      width: 400px;
+      height: 40px;
+      border-radius: 10px;
+      padding: 15px;
+      font-size: 20px;
+      margin-right: 20px;
+
+      &:focus {
+        border: 1px solid rgba(0, 0, 0, 0.6);
+        outline: none;
+
+      }
+    }
+
+    .submit {
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      background-color: #fff;
+      width: 200px;
+      border-radius: 10px;
+      padding-inline: 15px;
+      font-size: 20px;
+      margin-inline: 20px;
+      height: 40px;
+      cursor: pointer;
+      transition: background-color 0.08s ease-in-out;
+
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+
+    h2 {
+      margin-top: 4px;
+    }
+  }
+
+  .todo__list {
+    width: 790px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-row-gap: 5px;
+    margin-block: 8px;
+    font-size: 26px;
+    button {
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      background-color: #fff;
+      width: 400px;
+      font-size: 24px;
+      cursor: pointer;
+      transition: background-color 0.08s ease-in-out;
+    }
+    .todo__done {
+
+      transition: background-color 0.17s ease-in-out;
+
+      &:hover {
+        background-color: #abff8a;
+      }
+    }
+
+    .todo__delete {
+      transition: background-color 0.17s ease-in-out;
+
+      &:hover {
+        background-color: #ff8a8a;
+      }
+    }
+    span {
+      width: 400px;
+      overflow: scroll;
+      margin-right: 20px;
+    }
+  }
+}
+
+@media (max-width: 1430px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-inline: 20px;
+
+    .input {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .main {
+    .input {
+      width: 240px;
     }
   }
 }

@@ -4,34 +4,69 @@ import s from "./Main.module.scss";
 import { TodoListContext } from "src/App.jsx";
 
 export default function Main() {
-
-  const { todoList, setTodoList, todoTarget, setTodoTarget, points, setPoints } = React.useContext(TodoListContext);
+  const {
+    todoList,
+    setTodoList,
+    todoTarget,
+    setTodoTarget,
+    todoPoints,
+    setTodoPoints,
+    todoPointsValue,
+    setTodoPointsValue,
+  } = React.useContext(TodoListContext);
 
   function addTodo() {
-    setTodoList(prev => [...prev, {todo: todoTarget, points: points}]);
+    if (todoTarget && todoPoints) {
+      setTodoList((prev) => [
+        ...prev,
+        { todoTarget: todoTarget, todoPoints: todoPoints, index: prev.length+1 },
+      ]);
+    }
+  }
+
+  function deleteTodo(index) {
+    setTodoList((prev) => prev.filter((todo) => todo.index !== index));
+  }
+
+  function doneTodo(index) {
+    setTodoPointsValue(Number(todoPointsValue) + Number(todoPoints));
+    deleteTodo(index);
   }
 
   return (
     <>
       <Header />
       <main className={s.main}>
-        <input
-          className={`${s.input} ${s.todo__target}`}
-          type="text"
-          placeholder="Цель"
-          value={todoTarget}
-          onChange={e => setTodoTarget(e.target.value)}
-        />
-        <input
-          className={`${s.input} ${s.todo__points}`}
-          type="number"
-          placeholder="Очки"
-          value={points}
-          onChange={e => setPoints(e.target.value)}
-        />
-        <button className={s.button} type="submit" onClick={addTodo}>
-          Добавить
-        </button>
+        <section className={s.todo__form}>
+          <input
+            type="text"
+            placeholder="Цель"
+            value={todoTarget}
+            onChange={(e) => setTodoTarget(e.target.value)}
+          />
+          <input
+            type="number"
+            placeholder="Очки"
+            value={todoPoints}
+            onChange={(e) => setTodoPoints(e.target.value)}
+          />
+          <button className={s.submit} type="submit" onClick={addTodo}>
+            Добавить
+          </button>
+          <h2>
+            Очков: {todoPointsValue}
+          </h2>
+        </section>
+        <section className={s.todo__list__container}>
+          {todoList.map(({ todoTarget, todoPoints, index }) => (
+            <p className={s.todo__list} key={index}>
+              <span className={s.todo__target}>Цель {index}: {todoTarget}</span>
+              <button className={s.todo__done} onClick={() => doneTodo(index)}>Выполнено</button>
+              <span className={s.todo__points}>Награда: {todoPoints}</span>
+              <button className={s.todo__delete} onClick={() => deleteTodo(index)}>Удалить</button>
+            </p>
+          ))}
+        </section>
       </main>
     </>
   );

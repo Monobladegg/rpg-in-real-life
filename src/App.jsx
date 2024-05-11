@@ -9,19 +9,15 @@ export const TodoListContext = createContext([]);
 export default function App() {
   const [todoList, setTodoList] = React.useState([]);
   const [todoTarget, setTodoTarget] = React.useState("");
-  const [points, setPoints] = React.useState(0);
+  const [todoPoints, setTodoPoints] = React.useState(1);
+  const [todoPointsValue, setTodoPointsValue] = React.useState(0);
 
   useEffect(() => {
     console.log(todoList);
-    console.log(points);
+    console.log(todoPoints);
     console.log(todoTarget);
-  }, [points, todoList, todoTarget]);
+  }, [todoPoints, todoList, todoTarget]);
 
-  useEffect(() => {
-    if (points < 0) {
-      setPoints(0);
-    }
-  }, [points])
   return (
         <TodoListContext.Provider
           value={{
@@ -29,13 +25,15 @@ export default function App() {
             setTodoList,
             todoTarget,
             setTodoTarget,
-            points,
-            setPoints,
+            todoPoints,
+            setTodoPoints,
+            todoPointsValue,
+            setTodoPointsValue,
           }}
         >
       <Routes>
-          <Route path="/" element={<Main />} />
-        <Route path="/docs" element={<Docs />} />
+        <Route path="/rpg-in-real-life/" element={<Main />} />
+        <Route path="/rpg-in-real-life/docs" element={<Docs />} />
       </Routes>
         </TodoListContext.Provider>
   );
