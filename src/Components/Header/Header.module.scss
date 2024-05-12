@@ -15,6 +15,7 @@
     font-size: 32px;
     text-align: center;
     line-height: 0.7;
+    margin-left: -10px;
 
     .hearts {
       display: flex;
@@ -23,10 +24,40 @@
       padding-bottom: 5px;
     }
   }
+
+  .docs {
+    font-size: 32px;
+    writing-mode: vertical-rl;
+    transform: rotate(-180deg);
+    margin-right: -20px;
+    margin-top: 10px;
+  }
+  .center {
+    margin-block: auto;
+    display: flex;
+    justify-content: center;
+    .progressBarBorder {
+      width: 30vw;
+      border: 2px solid rgba(112, 112, 112, 0.979);
+      height: 28px;
+      border-radius: 10px;
+      z-index: 1;
+      margin-inline: 10px;
+      .progressBar {
+        height: 100%;
+        background-color: red;
+        border-radius: 7px;
+        z-index: -1;
+      }
+    }
+  }
 }
 
 @media (max-width: 1430px) {
   .header {
     margin-inline: 20px;
+  }
+  .center {
+    flex-direction: column;
   }
 }

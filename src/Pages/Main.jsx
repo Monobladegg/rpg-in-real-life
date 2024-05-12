@@ -29,9 +29,10 @@ export default function Main() {
   }
 
   function doneTodo(index) {
+    console.log(todoList)
     setTodoPointsValue(Number(todoPointsValue) + Number(todoPoints));
 
-    localStorage.setItem("points", Number(todoPointsValue) + Number(todoPoints));
+    localStorage.setItem("points", Number(todoPointsValue) + Number(todoList[index].todoPoints));
     deleteTodo(index);
   }
 
@@ -54,6 +55,9 @@ export default function Main() {
           />
           <button className={s.submit} type="submit" onClick={addTodo}>
             Добавить
+          </button>
+          <button className={s.submit} type="submit" onClick={() => setTodoPointsValue(0)}>
+            Сброс очков
           </button>
           <h2>
             Очков: {todoPointsValue}

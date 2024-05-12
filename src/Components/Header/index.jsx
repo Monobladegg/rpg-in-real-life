@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import s from "./Header.module.scss";
-
+import { TodoListContext } from "../../App";
 
 function Header() {
+  const { todoPointsValue } = React.useContext(TodoListContext);
+
   return (
     <header className={s.header}>
       <div className={s.left}>
@@ -21,10 +23,19 @@ function Header() {
           </div>
         </Link>
       </div>
+      <div className={s.center}>
+        <div className={s.progressBarBorder}>
+          <div
+            className={s.progressBar}
+            style={{ width: `${todoPointsValue}%` }}
+          ></div>
+        </div>
+        <h2>{todoPointsValue} очков</h2>
+      </div>
       <div className={s.right}>
         <h1>
           <Link to="/rpg-in-real-life/docs" className={s.link}>
-            Docs
+            <h2 className={s.docs}>Docs</h2>
           </Link>
         </h1>
       </div>
